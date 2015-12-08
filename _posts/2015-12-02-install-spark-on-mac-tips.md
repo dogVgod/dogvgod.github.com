@@ -1,28 +1,24 @@
 ---
 layout: default
-title: Hello New World
+title: install spark&hadoop on mac 
 ---
 
 ## {{ page.title }}
-
-brew install hadoop
-
-brew install apache-spark scala sbt
-
+* brew install hadoop<br/>
+* brew install apache-spark scala sbt<br/>
 vim ~/.bash_profile
 export JAVA_HOME=$(/usr/libexec/java_home)
 export HADOOP_HOME=/usr/local/homebrew/Cellar/hadoop/2.7.1
 export HADOOP_CONF_DIR=$HADOOP_HOME/libexec/etc/hadoop
 export SCALA_HOME=/usr/local/homebrew/Cellar/apache-spark/1.4.1
 
-
-# set path variables
+ set path variables
 export PATH=$PATH:$HADOOP_HOME/bin:$SCALA_HOME/bin
 . ~/.bash_profile
-#ssh 登陆
-#在mac 下要开启remote logig
+ssh 登陆
+在mac 下要开启remote logig
 ssh-keygen -t rsa cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys 
-#第一步 修改Hadoop的配置
+第一步 修改Hadoop的配置
 cd  /usr/local/homebrew/Cellar/hadoop/2.7.1
 vim etc/hadoop/core-site.xml
 <property>
@@ -57,7 +53,7 @@ vim etc/hadoop/yarn-site.xml
           <name>yarn.nodemanager.aux-services</name>
               <value>mapreduce_shuffle</value>
              </property>    
-#第二步 
+第二步 
 cd /usr/local/homebrew/Cellar/hadoop/2.7.1 
 
 ./bin/hdfs namenode -format
@@ -70,7 +66,7 @@ http://localhost:8088/
 
 ./bin/hdfs dfs -mkdir -p /user/geda
 ./bin/hadoop jar libexec/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar pi 10 100 
-#第三步 测试spark
+第三步 测试spark
 cd /usr/local/homebrew/Cellar/apache-spark/1.4.1
 ./bin/run-example SparkPi
 测试spark-shell
