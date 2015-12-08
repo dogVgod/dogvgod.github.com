@@ -4,9 +4,9 @@ title: install spark&hadoop on mac
 ---
 
 ## {{ page.title }}
-* brew install hadoop<br/>
-* brew install apache-spark scala sbt<br/>
-vim ~/.bash_profile
+ brew install hadoop
+ brew install apache-spark scala sbt
+ vim ~/.bash_profile
 export JAVA_HOME=$(/usr/libexec/java_home)
 export HADOOP_HOME=/usr/local/homebrew/Cellar/hadoop/2.7.1
 export HADOOP_CONF_DIR=$HADOOP_HOME/libexec/etc/hadoop
